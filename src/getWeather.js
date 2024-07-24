@@ -3,7 +3,10 @@ import { spaceConverter } from './spaceConverter'
 async function getWeather(arg) {
 
     try {
-        let query = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/' + spaceConverter(arg) + '?key=Y5C2BM4KCJ4BXM4ULUQ5AUAFG'
+        let query = 'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/' 
+        // Convert spaces so visual crossing can read the data
+        + spaceConverter(arg) 
+        + '?key=Y5C2BM4KCJ4BXM4ULUQ5AUAFG'
         let weatherResponse = await fetch(query)
 
         let weatherJson = await weatherResponse.json()
