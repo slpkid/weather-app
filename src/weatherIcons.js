@@ -1,4 +1,4 @@
-import clearDay from './img/clear-day.svg' 
+import clearDay from './img/weather-icons/clear-day.svg' 
 import showersDay from './img/weather-icons/showers-day.svg'
 import clearNight from './img/weather-icons/clear-night.svg'
 import showersNight from './img/weather-icons/showers-night.svg'
