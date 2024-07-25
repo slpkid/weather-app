@@ -1,4 +1,5 @@
 import { spaceConverter } from './spaceConverter'
+import { weatherField } from './eventListeners'
 
 async function getWeather(arg) {
 
@@ -11,7 +12,7 @@ async function getWeather(arg) {
 
         let weatherJson = await weatherResponse.json()
 
-        console.log(weatherJson)
+        // console.log(weatherJson)
 
         // Show today's forecasted temperatures
         console.log(`Today's forecast is: `)
@@ -35,14 +36,14 @@ async function getWeather(arg) {
                 High of: ${day.tempmax} 
                 Low of: ${day.tempmin} 
                 Feels like: ${day.feelslike} 
-                Description: ${day.description}
-                `
+                Description: ${day.description}`
             )
         })
+        return weatherJson
     } catch (err) {
         throw new Error (err)
     }
 
 }
 
-export { getWeather }
+export { getWeather, weatherField }

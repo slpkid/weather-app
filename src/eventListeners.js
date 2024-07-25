@@ -1,11 +1,21 @@
 import { getWeather } from "./getWeather";
+import { createweatherDiv } from './createWeatherDiv'
+import { deleteChildren } from './deleteChildren'
+
+const weatherField = document.getElementById('weather-field')
 
 const cityInput = document.getElementById('city')
 const submitButton = document.getElementById('submit')
 
-submitButton.addEventListener('click', e => {
-    // console.log(cityInput.value)
-    getWeather(cityInput.value)
-})
+submitButton.addEventListener('click', submitButtonFunction)
 
-export { submitButton, cityInput }
+async function submitButtonFunction() {
+    let weatherJson = await getWeather(cityInput.value)
+
+    console.log(weatherJson)
+    deleteChildren(weatherField)
+    createweatherDiv(weatherJson,true)
+    createweatherDiv(weatherJson.days[1])
+}
+
+export { submitButton, cityInput, weatherField }

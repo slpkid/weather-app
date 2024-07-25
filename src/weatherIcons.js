@@ -21,38 +21,31 @@ import thunder from './img/weather-icons/thunder.svg'
 import rain from './img/weather-icons/rain.svg'
 import wind from './img/weather-icons/wind.svg'
 
-
+// Call the correct value by using the string provided by
+// the API as a key lookup.
 const weatherImages = {
-    clearDay: clearDay,
-    showersDay: showersDay,
-    clearNight: clearNight,
-    showersNight: showersNight,
-    cloudy: cloudy,
-    sleet: sleet,
-    fog: fog,
-    snowShowersDay: snowShowersDay,
-    hail: hail,
-    snowShowersNight: snowShowersNight,
-    partlyCloudyDay: partlyCloudyDay,
-    snow: snow,
-    partlyCloudyNight: partlyCloudyNight,
-    thunderRain: thunderRain,
-    rainSnowShowersDay: rainSnowShowersDay,
-    thunderShowersDay: thunderShowersDay,
-    rainSnowShowersNight: rainSnowShowersNight,
-    thunderShowersNight: thunderShowersNight,
-    rainSnow: rainSnow,
-    thunder: thunder,
-    rain: rain,
-    wind: wind
+    "clear-day": clearDay,
+    "showers-day": showersDay,
+    "clear-night": clearNight,
+    "showers-night": showersNight,
+    "cloudy": cloudy,
+    "sleet": sleet,
+    "fog": fog,
+    "snow-showers-day": snowShowersDay,
+    "hail": hail,
+    "snow-showers-night": snowShowersNight,
+    "partly-cloudy-day": partlyCloudyDay,
+    "snow": snow,
+    "partly-cloudy-night": partlyCloudyNight,
+    "thunder-rain": thunderRain,
+    "rain-snow-showers-day": rainSnowShowersDay,
+    "thunder-showers-day": thunderShowersDay,
+    "rain-snow-showers-night": rainSnowShowersNight,
+    "thunder-showers-night": thunderShowersNight,
+    "rain-snow": rainSnow,
+    "thunder": thunder,
+    "rain": rain,
+    "wind": wind
 }
-
-// const weatherField = document.getElementById('weather-field')
-
-// const weatherImg = document.createElement('img')
-
-// weatherImg.src = weatherImages.snow
-
-// weatherField.appendChild(weatherImg)
 
 export { weatherImages }
