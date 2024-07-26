@@ -14,8 +14,8 @@ async function submitButtonFunction() {
 
     console.log(weatherJson)
     deleteChildren(weatherField)
-    createweatherDiv(weatherJson,true)
-    createweatherDiv(weatherJson.days[1])
+    createweatherDiv(weatherJson)
+    createweatherDiv(weatherJson,1)
 }
 
 export { submitButton, cityInput, weatherField }
