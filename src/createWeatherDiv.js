@@ -1,5 +1,6 @@
 import { weatherImages } from "./weatherIcons"
 import { weatherField } from "./eventListeners"
+import { weatherDetailsScreen } from "./eventListeners"
 
 function createweatherDiv(weatherJSON, currentDay) {
     const div = document.createElement('div')
@@ -15,9 +16,7 @@ function createweatherDiv(weatherJSON, currentDay) {
     } else {
         weatherImg.src = weatherImages[weatherJSON.currentConditions.icon]
     }
-
     weatherImg.classList.add('weather-icon')
-
     div.appendChild(weatherImg)
     div.classList.add('weather-div')
 
@@ -42,10 +41,11 @@ function createweatherDiv(weatherJSON, currentDay) {
         div.appendChild(currentTemp)
 
         const currentDescription = document.createElement('p')
-        currentDescription.textContent = 'Today is: XXX, Current Conditions are:'
+        currentDescription.textContent = `Today is: ${weatherJSON.days[0].datetime}, Current Conditions are:`
+        currentDescription.classList.add('weather-description')
         // todo: add current time widget?
         div.appendChild(currentDescription)
-        return
+        
     } else {
         // description.textContent = `
         // The conditions for ${day.datetime} are: ${day.conditions}.
@@ -54,6 +54,12 @@ function createweatherDiv(weatherJSON, currentDay) {
         // Temperature Low: ${day.tempmin}.
         // Feels like: ${day.feelslike}.
         // `
+        const dayDateText = document.createElement('p')
+        const weatherDate = weatherJSON.days[currentDay].datetime
+        dayDateText.textContent = `${weatherDate}`
+        dayDateText.classList.add('weather-date')
+        div.appendChild(dayDateText)
+
         const tempHigh = document.createElement('p')
         const tempLow = document.createElement('p')
         const spacer = document.createElement('p')
@@ -69,9 +75,27 @@ function createweatherDiv(weatherJSON, currentDay) {
         div.appendChild(tempHigh)
         div.appendChild(tempLow)
         div.appendChild(spacer)
-        return
+        
     }
+
+    // upon clicking a div, render the details under the weather details screen
+    div.addEventListener('click', e => {
+        console.log("it works")
+        console.log(weatherDetailsScreen)
+    })
     // div.appendChild(description)
 }
+
+
+// display the local time and have it tick upwards...?
+
+// function timeNow() {
+//     setInterval(() => {
+//         const time = Date.now()
+//         console.log(time.toString())
+//     },1000)
+// }
+
+// timeNow()
 
 export { createweatherDiv }

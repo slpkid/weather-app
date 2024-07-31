@@ -1,13 +1,15 @@
 .weather-div {
     border: 1px gray solid;
     border-radius: 1rem;
-    height: 350px;
+    height:275px;
     width: 350px;
     display: grid;
     grid-template-columns: 1fr  1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     justify-items: center;
     align-items: center;
+    padding: 0.5rem;
+    grid-gap: 0.5rem;
 }
 
 .weather-icon {
@@ -22,9 +24,10 @@
     align-self: flex-end;
 }
 
-.weather-description {
-    grid-column: 1/4;
-    grid-row: 3/4;
+.weather-description,
+.weather-date {
+    grid-column: 3/6;
+    grid-row: 2/3;
 }
 
 .weather-current {
@@ -54,8 +57,10 @@
 }
 .weather-low,
 .weather-spacer,
-.weather-high {
-    font-size: 2rem
+.weather-high,
+.weather-current {
+    font-size: 2rem;
+    text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;
 }
 
 .weather-div:hover {
