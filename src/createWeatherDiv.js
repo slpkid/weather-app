@@ -1,6 +1,52 @@
 import { weatherImages } from "./weatherIcons"
 import { weatherField } from "./eventListeners"
 import { weatherDetailsScreen } from "./eventListeners"
+import { deleteChildren } from "./deleteChildren"
+
+function renderDetails(dateInfoJSON, currentDay) {
+    
+    deleteChildren(weatherDetailsScreen)
+
+    //append information to the details screen for the called day
+    const date = document.createElement('p')
+    date.textContent = `${dateInfoJSON.days[currentDay].datetime}`
+    weatherDetailsScreen.appendChild(date)
+
+    const location = document.createElement('p')
+    location.textContent = dateInfoJSON.resolvedAddress
+    weatherDetailsScreen.appendChild(location)
+    
+    for (let i = 3; i < 24; i += 3) {
+        const list = document.createElement('li')
+        weatherDetailsScreen.appendChild(list)
+    
+        const image = document.createElement('img')
+        image.src = weatherImages[dateInfoJSON.days[currentDay].hours[i].icon]
+        image.classList.add('small-weather-icon')
+        list.appendChild(image)
+        
+        const time = document.createElement('p') 
+        if (i < 12) {
+            time.textContent += '0'
+        }
+        time.textContent += `${i}00: ${dateInfoJSON.days[currentDay].hours[i].temp}\u00B0`
+        list.appendChild(time)
+    }
+
+    const list0000 = document.createElement('li')
+    weatherDetailsScreen.appendChild(list0000)
+
+    const imageAM0000 = document.createElement('img')
+    imageAM0000.src = weatherImages[dateInfoJSON.days[currentDay].hours[0].icon]
+    imageAM0000.classList.add('small-weather-icon')
+    list0000.appendChild(imageAM0000)
+    
+    const AM0000 = document.createElement('p') 
+    AM0000.textContent = `0000: ${dateInfoJSON.days[currentDay + 1].hours[0].temp}\u00B0`
+    list0000.appendChild(AM0000)
+
+    return
+}
 
 function createweatherDiv(weatherJSON, currentDay) {
     const div = document.createElement('div')
@@ -76,13 +122,12 @@ function createweatherDiv(weatherJSON, currentDay) {
         div.appendChild(tempLow)
         div.appendChild(spacer)
         
+        // upon clicking a div, render the details under the weather details screen
+        div.addEventListener('click', e => {
+            renderDetails(weatherJSON,currentDay)
+        })
     }
 
-    // upon clicking a div, render the details under the weather details screen
-    div.addEventListener('click', e => {
-        console.log("it works")
-        console.log(weatherDetailsScreen)
-    })
     // div.appendChild(description)
 }
 

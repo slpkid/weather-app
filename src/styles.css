@@ -12,6 +12,12 @@
     grid-gap: 0.5rem;
 }
 
+#details-screen {
+    border: 1px gray solid;
+    border-radius: 1rem;   
+    padding: 0.5rem;
+}
+
 .weather-icon {
     grid-column: 1/3;
     grid-row: 1/3;
@@ -63,7 +69,23 @@
     text-shadow: 0 0 1px black, 0 0 1px black, 0 0 1px black, 0 0 1px black;
 }
 
-.weather-div:hover {
+.weather-div:hover,
+#details-screen:hover {
     background-color: gainsboro;
+}
+
+.weather-div:hover {
     cursor: pointer;
+}
+
+.small-weather-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+#details-screen li {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 0.5rem;
 }
